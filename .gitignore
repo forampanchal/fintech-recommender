@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+venv/
+.venv/
+data/*.csv
+data/*.json
+.ipynb_checkpoints/
+.vscode/
+*.credentials.json
+profiles.yml
