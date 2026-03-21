@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: FINTECH_RECOMMENDER
+    schema: BRONZE
+    tables:
+      - name: customers
+      - name: transactions
+      - name: products_held
+      - name: product_catalog
