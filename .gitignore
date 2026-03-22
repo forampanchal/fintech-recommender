@@ -9,3 +9,6 @@ data/*.json
 .vscode/
 *.credentials.json
 profiles.yml
+mlflow/
+.ipynb_checkpoints/
+__pycache__/
