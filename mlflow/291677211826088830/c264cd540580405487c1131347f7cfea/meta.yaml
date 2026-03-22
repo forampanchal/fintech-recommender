@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Foram/Projects/Fintech Recommender System/fintech-recommender/mlflow/291677211826088830/c264cd540580405487c1131347f7cfea/artifacts
+end_time: 1774189190681
+entry_point_name: ''
+experiment_id: '291677211826088830'
+lifecycle_stage: active
+run_id: c264cd540580405487c1131347f7cfea
+run_name: ALS_v2_snowflake
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774189183467
+status: 3
+tags: []
+user_id: Foram
