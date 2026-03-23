@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: fintech-recommender-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SNOWFLAKE_ACCOUNT
+        sync: false
+      - key: SNOWFLAKE_USER
+        sync: false
+      - key: SNOWFLAKE_PASSWORD
+        sync: false
+      - key: SNOWFLAKE_WAREHOUSE
+        sync: false
+      - key: SNOWFLAKE_DATABASE
+        sync: false
+      - key: SNOWFLAKE_SCHEMA
+        sync: false

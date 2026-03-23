@@ -19,22 +19,21 @@ app = FastAPI(
 )
 
 # ─────────────────────────────
-# Load data on startup
-# ─────────────────────────────
-print("Loading data...")
+# Load data from Snowflake on startup
+print("Loading data from Snowflake...")
 
-# Load hybrid recommendations
-hybrid_df = pd.read_csv('data/hybrid_recommendations.csv')
-
-# Load customer features from Snowflake
 customer_features = read_table('GOLD_CUSTOMER_FEATURES')
 customer_features.columns = customer_features.columns.str.lower()
 
-# Load product affinity from Snowflake
 product_affinity = read_table('GOLD_PRODUCT_AFFINITY')
 product_affinity.columns = product_affinity.columns.str.lower()
 
-print("✅ Data loaded!")
+hybrid_df = read_table('HYBRID_RECOMMENDATIONS')
+hybrid_df.columns = hybrid_df.columns.str.lower()
+
+print("✅ All data loaded from Snowflake!")
+print(f"Customers: {len(customer_features):,}")
+print(f"Hybrid recs: {len(hybrid_df):,}")
 
 # ─────────────────────────────
 # Product profiles for CB model
