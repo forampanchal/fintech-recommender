@@ -7,8 +7,3 @@
     "restartPolicyType": "ON_FAILURE"
   }
 }
-```
-
-And update `runtime.txt`:
-```
-python-3.11.9
