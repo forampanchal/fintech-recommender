@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 # ─────────────────────────────
 # Config
 # ─────────────────────────────
-API_URL = "http://localhost:8000"
+API_URL = "https://web-production-f724d.up.railway.app"
 
 st.set_page_config(
     page_title="Fintech Product Recommender",
@@ -116,7 +116,8 @@ with tab1:
     if search_btn and customer_id:
         with st.spinner("Generating recommendations..."):
             try:
-                response = requests.get(f"{API_URL}/recommend/{customer_id}")
+                response = requests.get(
+                    f"{API_URL}/recommend/{customer_id}", timeout=10)
 
                 if response.status_code == 200:
                     data = response.json()
@@ -268,7 +269,7 @@ with tab2:
             try:
                 response = requests.post(
                     f"{API_URL}/recommend/profile",
-                    json=payload
+                    json=payload, timeout=10
                 )
 
                 if response.status_code == 200:
@@ -310,6 +311,11 @@ with tab2:
                 else:
                     st.error("Something went wrong. Please try again.")
 
+            except requests.exceptions.Timeout:
+                st.error("⏱ API timeout — server is slow, try again")
+
+            except requests.exceptions.ConnectionError:
+                st.error("❌ Cannot connect to API — backend may be down")
+
             except Exception as e:
-                st.error(
-                    f"Cannot connect to API. Make sure FastAPI is running! Error: {e}")
+                st.error(f"Unexpected error: {e}")
